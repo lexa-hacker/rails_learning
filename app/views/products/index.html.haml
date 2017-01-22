@@ -1,0 +1,11 @@
+%h1 All products
+-#%h4= link_to "one more?", new_company_path
+
+- if @products.empty?
+  %p No products in system.
+- else
+  - @products.each do |p|
+    %h2= link_to p.name, company_product_path(p)
+    %h3= "ID: #{p.id}"
+    %h3= "Price: #{p.price}"
+    %h3= "Description: #{p.description}"

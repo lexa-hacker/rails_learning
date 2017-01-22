@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-xs-offset-4.col-xs-4
+      %h1.form-name Edit this product
+      =form_for @product, url: company_product_path do |f|
+        .form-group
+          %label Product name:
+          =f.text_field :name, class: "form-control"
+        .form-group
+          %label Product description:
+          =f.text_area  :description, class: "form-control"
+        .form-group
+          %label Price:
+          =f.text_field :price, class: "form-control"
+        .form-group
+          %label Photo
+          %br= image_tag @product.photo.url(:medium), class: "img-thumbnail"
+          = f.file_field :photo
+        = f.submit 'Save', class: "btn btn-primary"
+        = link_to "Cancel",  company_product_path, class: "btn btn-danger"

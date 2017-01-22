@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-xs-offset-4.col-xs-4
+      %h1.form-name New Product
+      =form_for @product, url: {action: "create"} do |f|
+        =f.text_field :company_id, {type: "hidden", value: params[:company_id]}
+        .form-group
+          %label Product name:
+          = f.text_field :name, class: "form-control"
+        .form-group
+          %label Price:
+          = f.text_field :price, class: "form-control"
+        .form-group
+          %label Product description:
+          = f.text_area  :description, class: "form-control"
+        .form-group
+          %label Photo
+          = f.file_field :photo
+        = f.submit "Save", class: "btn btn-primary"
+        = link_to "Cancel",  company_path(params[:company_id]), class: "btn btn-danger"

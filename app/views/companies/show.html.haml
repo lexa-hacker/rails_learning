@@ -1,0 +1,33 @@
+.container
+  .row
+    %blockquote
+      %h1= @company.name
+      %h3= "ID: #{@company.id}"
+      %h3= "Since: #{@company.foundation}"
+      %h3= "Description: #{@company.description}"
+    .btn-group
+      = link_to "Edit company", edit_company_path(@company), class: "btn btn-default"
+      = link_to "Delete company", company_path(@company), method: :delete, data: {confirm: "are you sure?"}, class: "btn btn-default"
+      = link_to "Go to all companies", companies_path, class: "btn btn-default"
+      = link_to "Add new product", new_company_product_path(@company), class: "btn btn-default"
+
+- if @company.products.empty?
+  %p No products for this company.
+- else
+  .container
+    .row
+      %table.table.table-striped.col-xs-10
+        %caption Products
+        %tr
+          %th ID
+          %th Name
+          %th Price
+          %th Description
+          %th Photo
+        - @company.products.order(:id).each do |p|
+          %tr
+            %td= p.id
+            %td= link_to p.name, company_product_path(@company, p)
+            %td= p.price
+            %td= p.description
+            %td= image_tag p.photo.url(:thumb), class: "img-thumbnail"

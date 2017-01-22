@@ -1,0 +1,20 @@
+.page_name
+  %h1 All companies
+  %h4= link_to "one more?", new_company_path
+- if @companies.empty?
+  %p No companies in system.
+- else
+  .container
+    .row
+      %table.table.table-striped.col-xs-10  
+        %tr
+          %th ID
+          %th Name
+          %th Since
+          %th Description
+        - @companies.each do |c|
+          %tr
+            %td= c.id
+            %td= link_to c.name, company_path(c)
+            %td= c.foundation
+            %td= c.description

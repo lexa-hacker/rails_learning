@@ -1,0 +1,16 @@
+.container
+  .row
+    .col-xs-offset-4.col-xs-4
+      %h1.form-name Create new company
+      =form_for @company do |f|
+        .form-group
+          %label Company name:
+          = f.text_field :name, class: "form-control"
+        .form-group
+          %label Since:
+          = f.text_field :foundation, class: "form-control"
+        .form-group
+          %label Company description:
+          = f.text_area  :description, class: "form-control"
+        = f.submit "Save", class: "btn btn-primary"
+        = link_to "Cancel",  companies_path, class: "btn btn-danger"

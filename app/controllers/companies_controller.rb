@@ -4,10 +4,11 @@ class CompaniesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @companies = Company.all.order("id")
+    @companies = Company.all.order("id").page(params[:page]).per_page(10)
   end
 
   def show
+    redirect_to company_products_path(@company)
   end
 
   def new
@@ -23,7 +24,7 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company.update_attributes(company_params)
+    @company.update(company_params)
     if @company.errors.empty?
       redirect_to company_path(@company)
     else

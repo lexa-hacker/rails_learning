@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render_404
+    @company = Company.find(params[:company_id])
+    @products = Product.where(company_id: params[:company_id]).order("id").page(params[:page]).per_page(20)
   end
 
   def show
@@ -23,7 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.update_attributes(product_params)
+    @product.update(product_params)
     if @product.errors.empty?
       redirect_to company_product_path(params[:company_id], @product)
     else
@@ -45,6 +46,5 @@ class ProductsController < ApplicationController
     def find_product
       @product = Product.find(params[:id])
     end
-
 
 end

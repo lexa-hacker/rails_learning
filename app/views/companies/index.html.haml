@@ -1,4 +1,4 @@
-.page_name
+.center
   %h1 All companies
   %h4= link_to "one more?", new_company_path
 - if @companies.empty?
@@ -18,3 +18,5 @@
             %td= link_to c.name, company_path(c)
             %td= c.foundation
             %td= c.description
+    .row
+      .center= will_paginate @companies, renderer: BootstrapPagination::Rails, inner_window: 1, outer_window: 1

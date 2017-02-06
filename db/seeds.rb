@@ -21,5 +21,7 @@ companies.each do |c|
   end
 end
 
-Product.find(1).first.update_attributes(photo_file_name: "vjik.jpg", photo_content_type: "image/jpeg")
-Product.find(2).first.update_attributes(photo_file_name: "logo.jpg", photo_content_type: "image/jpeg")
+Product.find(1).first.update(picture: "1.jpg")
+Product.find(2).first.update(picture: "2.jpg")
+Product.find(3).first.update(picture: "3.jpg")
+Product.find(4).first.update(picture: "4.jpg")

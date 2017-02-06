@@ -14,7 +14,7 @@
           =f.text_field :price, class: "form-control"
         .form-group
           %label Photo
-          %br= image_tag @product.photo.url(:medium), class: "img-thumbnail"
-          = f.file_field :photo
+          %br= image_tag @product.picture_url, class: "img-thumbnail" if @product.picture?
+          = f.file_field :picture
         = f.submit 'Save', class: "btn btn-primary"
         = link_to "Cancel",  company_product_path, class: "btn btn-danger"

@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @products = Product.where(company_id: params[:company_id]).order("id").page(params[:page]).per_page(20)
+    render_404
   end
 
   def show
@@ -20,7 +21,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(product_params)
-    redirect_to company_path(params[:company_id])
+    redirect_to company_product_path(params[:company_id], @product)
   end
 
   def update
@@ -40,7 +41,7 @@ class ProductsController < ApplicationController
   private
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :company_id, :photo)
+      params.require(:product).permit(:name, :description, :price, :company_id, :photo, :picture)
     end
 
     def find_product

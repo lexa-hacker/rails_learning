@@ -18,6 +18,10 @@ gem 'sass-rails', '~> 5.0'
 # Paginate
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+# Carrierwave
+gem 'carrierwave'
+# MiniMagick
+gem 'mini_magick'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

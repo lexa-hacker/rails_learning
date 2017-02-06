@@ -1,1 +1,14 @@
-Redirected to /companies/:id/products
+.container
+  .row
+    %blockquote
+      %h1= @company.name
+      %h3= "ID: #{@company.id}"
+      %h3= "Since: #{@company.foundation}"
+      %h3= "Description: #{@company.description}"
+    .btn-group
+      = link_to "Edit company", edit_company_path(@company), class: "btn btn-default"
+      = link_to "Delete company", company_path(@company), method: :delete, data: {confirm: "are you sure?"}, class: "btn btn-default"
+      = link_to "Go to all companies", companies_path, class: "btn btn-default"
+      = link_to "Add new product", new_company_product_path(@company), class: "btn btn-default"
+
+= render template: "products/index"

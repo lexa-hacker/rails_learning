@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    redirect_to company_products_path(@company)
+    @products = @company.products.order("id").page(params[:page]).per_page(20)
   end
 
   def new

@@ -14,6 +14,5 @@
               = link_to "Delete product", company_product_path, method: :delete, data: {confirm: "are you sure?"}, class: "btn btn-default"
               = link_to "Go to all products", company_path(params[:company_id]), class: "btn btn-default"
           .col-xs-4
-            = image_tag @product.photo.url(:medium), class: "img-thumbnail"
+            = image_tag @product.picture.url, class: "img-thumbnail"
     .col-xs-2
-

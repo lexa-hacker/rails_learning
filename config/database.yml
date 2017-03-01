@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: ruby_learning_production
-  username: ruby_learning
-  password: <%= ENV['RUBY_LEARNING_DATABASE_PASSWORD'] %>
+  database: deploy
+  username: deploy
+  password: <%= ENV['PROD_DB_PWD'] %>

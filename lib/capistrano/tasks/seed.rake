@@ -2,8 +2,10 @@ namespace :seed do
   desc "Seed into db"
   task :seed do
     on roles(:app) do
-      within "#{fetch(:deploy_to)}/current" do
-        execute :rake, 'db:seed', "RAILS_ENV= #{fetch(:stage)}"
+      on host do
+        within '/home/deploy/apps/rails_learning/current' do
+          execute :rake, 'db:seed RAILS_ENV=production'
+        end
       end
     end
   end

@@ -20,8 +20,3 @@ companies.each do |c|
     Product.create(company_id: c.id, name: "Product #{c.id}:#{i}", price: rand(10000), description: "Product №#{i} of company #{c.name}")
   end
 end
-
-Product.find(1).first.update(picture: "1.jpg")
-Product.find(2).first.update(picture: "2.jpg")
-Product.find(3).first.update(picture: "3.jpg")
-Product.find(4).first.update(picture: "4.jpg")
